@@ -25,7 +25,7 @@ const store = {
 };
 
 const deepClone = (x) => JSON.parse(JSON.stringify(x));
-const todayISO = () => new Date().toISOString().slice(0, 10);
+const toISO = (d) => d.toLocaleDateString("en-CA");
 
 /* ----------------------------- Theme / Settings --------------------------- */
 function getSettings() {
@@ -996,9 +996,11 @@ function initHistory() {
 
 
 
-  const startOfWeek = (d) => { const c = new Date(d.getFullYear(), d.getMonth(), d.getDate()); 
+  const startOfWeek = (d) => {
+    const c = new Date(d.getFullYear(), d.getMonth(), d.getDate());
 
-  const wd = (c.getDay() + 6) % 7; c.setDate(c.getDate() - wd); return c; };
+    const wd = (c.getDay() + 6) % 7; c.setDate(c.getDate() - wd); return c;
+  };
   const addDays = (d, n) => { const c = new Date(d); c.setDate(c.getDate() + n); return c; };
 
   weekStart.value = toISO(startOfWeek(new Date()));
