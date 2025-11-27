@@ -739,7 +739,7 @@ function initLog() {
   planSelect.innerHTML =
     '<option value="">(from schedule)</option>' +
     pattern.map((p) => `<option value="${p}">${p}</option>`).join("");
-  dateInput.value = toISO();
+  dateInput.value = todayISO();
 
   const PROGRAM_TEMPLATES = {
     ppl: {
@@ -1257,7 +1257,7 @@ function initTracker() {
   const datalist = root.querySelector("#foodDatalist");
 
   /* ---------- Helpers ---------- */
-  dateIn.value = toISO();
+  dateIn.value = todayISO();
   const key = (d) => `calorie_${d}`;
   const getDay = (d) => store.get(key(d), { items: [] });
   const saveDay = (d, x) => store.set(key(d), x);
